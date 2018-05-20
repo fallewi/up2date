@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_pos_session_form_view_fal_p_s_p" model="ir.ui.view">
+            <field name="name">pos.session.form.view.fal.p.s.p</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <field name="config_id" position="after">
+                    <field name="session_password" groups="point_of_sale.group_pos_manager"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="pos_config_sync">
+            <field name="name">pos.config.sync</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="POS Sync">
+                            <group>
+                                <group>
+                                    <field name="user_ids" widget="many2many_tags" required="1"/>
+                                    <field name="sync_multi_session"/>
+                                </group>
+                                <group id="pos_bus" attrs="{'invisible' : [('sync_multi_session', '=', False)]}">
+                                    <field name="display_person_add_line"/>
+                                    <field name="bus_id"
+                                           attrs="{'required' : [('sync_multi_session', '=', True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="point_of_sale.action_pos_config_kanban" model="ir.actions.act_window">
+            <field name="domain">[('user_ids', 'in', [uid])]</field>
+        </record>
+
+        <record id="pos_bus_sync" model="ir.ui.view">
+            <field name="name">pos.config.tree.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="user_ids"/>
+                    <field name="bus_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+
+    <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/pos_bus/static/src/css/synchronization.css"/>
+            <script type="text/javascript" src="/pos_bus/static/src/js/synchronization.js"></script>
+        </xpath>
+    </template>
+</odoo>

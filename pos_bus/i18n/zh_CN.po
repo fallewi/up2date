@@ -1,0 +1,164 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_bus
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-29 08:09+0000\n"
+"PO-Revision-Date: 2018-01-02 10:23+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: en\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "Assign users"
+msgstr "分配用户"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_config_user_ids
+msgid "Assigned users"
+msgstr "已分配的用户"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_bus_form
+#: model:ir.ui.view,arch_db:pos_bus.pos_bus_tree
+msgid "Bus Location"
+msgstr "公交位置"
+
+#. module: pos_bus
+#: model:ir.actions.act_window,name:pos_bus.action_pos_bus
+#: model:ir.ui.menu,name:pos_bus.menu_action_pos_bus
+msgid "Bus Locations"
+msgstr "公交位置"
+
+#. module: pos_bus
+#. openerp-web
+#: code:addons/pos_bus/static/src/xml/pos_bus.xml:33
+#, python-format
+msgid "Coming date:"
+msgstr "即将到来的日期:"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_config_display_person_add_line
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "Display information line"
+msgstr "显示信息行"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_id
+msgid "ID"
+msgstr "ID"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus___last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_write_uid
+msgid "Last Updated by"
+msgstr "最后更新者"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_bus_name
+msgid "Name"
+msgstr "名称"
+
+#. module: pos_bus
+#. openerp-web
+#: code:addons/pos_bus/static/src/xml/pos_bus.xml:43
+#, python-format
+msgid "POS RETAIL V1.0, Author by: thanhchatvn@gmail.com"
+msgstr "POS RETAIL V1.0, Author by: thanhchatvn@gmail.com"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "POS Sync"
+msgstr "POS同步"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_config_bus_id
+msgid "Shop/bus location"
+msgstr "商店/公交站位置"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "Shop/bus point"
+msgstr "商店/公交站"
+
+#. module: pos_bus
+#: model:ir.ui.menu,name:pos_bus.menu_sync
+msgid "Sync between sellers"
+msgstr "卖家之间的同步"
+
+#. module: pos_bus
+#: model:ir.model.fields,field_description:pos_bus.field_pos_config_sync_multi_session
+msgid "Sync multi session"
+msgstr "同步多会话"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "Sync multi sessions, multi seller, all screen of session will the same"
+msgstr "如果同步多个会话，多个卖家，会话的所有屏幕将会相同"
+
+#. module: pos_bus
+#: model:ir.ui.view,arch_db:pos_bus.pos_config_sync
+msgid "Users"
+msgstr "用户"
+
+#. module: pos_bus
+#. openerp-web
+#: code:addons/pos_bus/static/src/js/client_get_notify.js:45
+#, python-format
+msgid "Waiting restore orders"
+msgstr "等待订单恢复"
+
+#. module: pos_bus
+#: model:ir.model.fields,help:pos_bus.field_pos_config_display_person_add_line
+msgid "When you checked, on pos order lines screen, will display information person created order (lines) Eg: create date, updated date .."
+msgstr "当你在POS订单屏幕上检查时, 将显示信息人创建的订单（行）例如:创建日期,更新日期 .."
+
+#. module: pos_bus
+#. openerp-web
+#: code:addons/pos_bus/static/src/xml/pos_bus.xml:11
+#, python-format
+msgid "added at"
+msgstr "添加"
+
+#. module: pos_bus
+#: model:ir.model,name:pos_bus.model_pos_bus
+msgid "pos.bus"
+msgstr "pos.bus"
+
+#. module: pos_bus
+#: model:ir.model,name:pos_bus.model_pos_config
+msgid "pos.config"
+msgstr "pos.config"

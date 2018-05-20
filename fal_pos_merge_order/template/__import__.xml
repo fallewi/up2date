@@ -1,0 +1,8 @@
+<odoo>
+
+    <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/fal_pos_merge_order/static/src/js/merge.js"></script>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Sold Out POS -->
+        <record id="view_product_template_product_sold_out_form" model="ir.ui.view">
+            <field name="name">view.product.template.product.sold.out.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="point_of_sale.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="available_in_pos" position="after">
+                    <field name="pos_sold_out" readonly="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_product_template_product_sold_out_manager_form" model="ir.ui.view">
+            <field name="name">view.product.template.product.sold.out.manager.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="view_product_template_product_sold_out_form"/>
+            <field name="groups_id" eval="[(4, ref('point_of_sale.group_pos_manager'))]"/>
+            <field name="arch" type="xml">
+                <field name="pos_sold_out" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_product_template_search_pos_sold_out_form" model="ir.ui.view">
+            <field name="name">product.template.search.pos.sold.out.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="point_of_sale.product_template_search_view_pos"/>
+            <field name="arch" type="xml">
+                <filter name="real_stock_negative" position="after">
+                   <filter name="filter_pos_sold_out" string="Sold Out in POS" domain="[('pos_sold_out', '=', True)]"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</odoo>

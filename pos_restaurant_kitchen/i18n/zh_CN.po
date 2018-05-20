@@ -1,0 +1,212 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_restaurant_kitchen
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-29 08:05+0000\n"
+"PO-Revision-Date: 2018-01-02 10:31+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model.fields,help:pos_restaurant_kitchen.field_pos_config_categ_ids
+msgid "Categories for Kitchen/Bar can see at screen"
+msgstr "可以在屏幕上看到厨房/酒吧的类别"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:97
+#, python-format
+msgid "Confirm cancel"
+msgstr "确认取消"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:129
+#, python-format
+msgid "Delete"
+msgstr "删除"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:80
+#, python-format
+msgid "Delivery"
+msgstr "运输"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:105
+#, python-format
+msgid "Done"
+msgstr "完成"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:140
+#, python-format
+msgid "Done all"
+msgstr "完成全部"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:110
+#, python-format
+msgid "Error"
+msgstr "错误"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:144
+#, python-format
+msgid "Exit priority"
+msgstr "优先退出"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:16
+#, python-format
+msgid "Floor"
+msgstr "楼层"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:148
+#, python-format
+msgid "High Priority"
+msgstr "高优先级"
+
+#. module: pos_restaurant_kitchen
+#: selection:pos.config,screen_type:0
+msgid "Kitchen"
+msgstr "厨房"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:19
+#, python-format
+msgid "Name"
+msgstr "名称"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:85
+#, python-format
+msgid "Not Enough Material"
+msgstr "没有足够的材料"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:21
+#, python-format
+msgid "Notes"
+msgstr "记录"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model.fields,help:pos_restaurant_kitchen.field_pos_config_play_sound
+msgid "On kitchen/bar screen, if you need have ring tone when have some requests from waiters, you can check to this field"
+msgstr "在厨房/酒吧的屏幕上，如果您需要服务员的某些要求时有铃声，可以查看该区域"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model.fields,field_description:pos_restaurant_kitchen.field_pos_config_categ_ids
+msgid "POS Categories"
+msgstr "POS类别"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model.fields,field_description:pos_restaurant_kitchen.field_pos_config_play_sound
+msgid "Play a sound"
+msgstr "播放声音"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.ui.view,arch_db:pos_restaurant_kitchen.view_pos_config_syncing
+msgid "Play sound when transactions/requests comming"
+msgstr "有交易/请求时播放声音"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:117
+#, python-format
+msgid "Priority"
+msgstr "优先"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.ui.view,arch_db:pos_restaurant_kitchen.view_pos_config_syncing
+msgid "Product categories access"
+msgstr "访问产品类别"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:91
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:124
+#, python-format
+msgid "Put Back"
+msgstr "放回去"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:20
+#, python-format
+msgid "Quantity"
+msgstr "数量"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_waiter.xml:152
+#, python-format
+msgid "Send Kitchen/bar"
+msgstr "发送到厨房/酒吧"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model.fields,field_description:pos_restaurant_kitchen.field_pos_config_screen_type
+msgid "Session Type"
+msgstr "会话类型"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:22
+#, python-format
+msgid "Status"
+msgstr "状态"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.ui.view,arch_db:pos_restaurant_kitchen.view_pos_config_syncing
+msgid "Sync Kitchen/bar room"
+msgstr "同步厨房/酒吧房间"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:17
+#, python-format
+msgid "Table"
+msgstr "桌"
+
+#. module: pos_restaurant_kitchen
+#. openerp-web
+#: code:addons/pos_restaurant_kitchen/static/src/xml/screen_kitchen.xml:18
+#, python-format
+msgid "Time"
+msgstr "时间"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.ui.view,arch_db:pos_restaurant_kitchen.view_pos_config_syncing
+msgid "Type of screen seller"
+msgstr "屏幕卖方的类型"
+
+#. module: pos_restaurant_kitchen
+#: selection:pos.config,screen_type:0
+msgid "Waiter"
+msgstr "服务生"
+
+#. module: pos_restaurant_kitchen
+#: model:ir.model,name:pos_restaurant_kitchen.model_pos_config
+msgid "pos.config"
+msgstr "pos.config"

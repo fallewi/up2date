@@ -1,0 +1,10 @@
+<odoo>
+
+    <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/fal_pos_sold_out_list/static/src/js/sold_out.js"></script>
+            <script type="text/javascript" src="/fal_pos_sold_out_list/static/src/js/models.js"></script>
+            <script type="text/javascript" src="/fal_pos_sold_out_list/static/src/js/screens.js"></script>
+        </xpath>
+    </template>
+</odoo>

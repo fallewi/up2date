@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_pos_config_syncing">
+            <field name="name">pos.config.sync</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="pos_bus.pos_config_sync"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@id='pos_bus']" position="inside">
+                    <field name="play_sound"/>
+                    <field name="screen_type"/>
+                    <field name="product_categ_ids"
+                           widget="many2many_tags"
+                           attrs="{'required': [('screen_type', '=', 'kitchen')], 'invisible': [('screen_type', '!=', 'kitchen')]}"/>
+                    <field name="display_floor"/>
+                    <field name="display_table"/>
+                    <field name="display_product_image"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

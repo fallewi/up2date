@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="pos_config_sync_fal_security">
+            <field name="name">pos.config.sync.fal.security</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="pos_bus.pos_config_sync"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bus_id']" position="after">
+                    <field name="bus_master"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="pos_bus_fal_pos_bus_security_form" model="ir.ui.view">
+            <field name="name">pos.bus.fal.pos.bus.security.form</field>
+            <field name="model">pos.bus</field>
+            <field name="inherit_id" ref="pos_bus.pos_bus_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='log_ids']/tree" position="after">
+                    <field name="faulty"/>
+                    <field name="big_order"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
