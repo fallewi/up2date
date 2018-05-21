@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+
+        <record id="sold_out_bom_view" model="ir.ui.view">
+            <field name="name">sold.out.bom.form</field>
+            <field name="model">sold.out.bom</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Draft Invoices">
+                    <p class="oe_grey">
+                        Material that is listed here are the run out material.
+                        Product that is using this material as the BOM will automatically listed as sold out on POS.
+                    </p>
+                    <group>
+                        <field name="product_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="sold_out_confirm" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_sold_out_bom"
+            multi="True"
+            key2="client_action_multi" name="Empty Material"
+            res_model="sold.out.bom" src_model="product.template"
+            view_mode="form" target="new" view_type="form" />
+
+        <record id="action_sold_out_bom" model="ir.actions.act_window">
+            <field name="name">Empty Material</field>
+            <field name="res_model">sold.out.bom</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sold_out_bom_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_sold_out_bo" name="Empty Material" action="action_sold_out_bom" parent="point_of_sale.pos_config_menu_catalog" groups="point_of_sale.group_pos_manager"/>
+
+    </data>
+</odoo>

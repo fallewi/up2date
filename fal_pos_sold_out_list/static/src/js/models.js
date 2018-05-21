@@ -21,6 +21,7 @@ odoo.define('fal_pos_bus_sold_out_list.models', function (require) {
                     shadow: true,
                 })
                 .then(function(products){
+                    // Mark the product on db
                     for (product in self.db.product_by_id){
                         self.db.product_by_id[product].pos_sold_out = false
                         for (sold_out_product in products){
@@ -29,6 +30,7 @@ odoo.define('fal_pos_bus_sold_out_list.models', function (require) {
                             }
                         }
                     }
+                    def.resolve();
                 }, function(type,err){ def.reject(); });
             return def;
         },

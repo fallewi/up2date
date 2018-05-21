@@ -30,11 +30,17 @@ odoo.define('fal_pos_sold_out_list.sold_out', function (require) {
                         label: _lt('Sold Out'),
                         action: function(){
                             var self = this;
-                            self.gui.show_popup('selection',{
-                                title: _t('Sold Out List'),
-                                list: [
-                                    {label: 'A',  item: 0},
-                                    {label: 'B',  item: 1}],
+                            self.pos.load_new_sold_out_products().then(function(){
+                                var sold_out_list = []
+                                for (product in self.pos.db.product_by_id){
+                                    if (self.pos.db.product_by_id[product].pos_sold_out){
+                                        sold_out_list.push({label: self.pos.db.product_by_id[product].display_name, item: product})
+                                    }
+                                }
+                                self.gui.show_popup('selection',{
+                                    title: _t('Sold Out List'),
+                                    list: sold_out_list,
+                                });
                             });
                         },
                     }
