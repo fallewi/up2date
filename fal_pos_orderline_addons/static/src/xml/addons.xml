@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="Orderline">
+        <t t-jquery="li" t-operation="attributes">
+            <attribute name="t-attf-class">orderline #{ line.selected ? 'selected' : '' } #{ line.get_product().is_topping_item ? 'addons' : '' }</attribute>
+        </t>
+        <t t-jquery="t[t-esc='line.get_product().display_name']" t-operation="before">
+            <t t-if="line.get_product().is_topping_item">
+                <i class='fa fa-plus' />
+            </t>
+        </t>
+    </t>
+
+    <t t-name="AddonsButton">
+        <div class='control-button'>
+            <i class='fa fa-plus' /> Toppings
+        </div>
+    </t>
+
+</templates>

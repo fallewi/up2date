@@ -1,0 +1,8 @@
+
+/* ------ Addons Orderline ------- */
+
+.pos .order .orderline.addons{
+    color: #ffcc00;
+    width: 95%;
+    margin-left: 5%;
+}
