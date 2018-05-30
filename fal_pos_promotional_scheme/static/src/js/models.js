@@ -46,7 +46,7 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
             // If.promo item, don't let non-manager to add / modify
             if (!this.pos.the_first_load){
                 if (this.product.is_promotional_item && this.pos.user.role != 'manager' && !this.pos.user.skip_assert_promo){
-                    this.pos.gui.show_popup('error', {
+                    this.pos.gui.show_popup('error-traceback', {
                         'title': _t('Restriction'),
                         'body':  _t('Cannot change Promotional Item. Ask your manager on duty!'),
                     });
@@ -100,10 +100,7 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
             var self = this;
             if (!this.pos.the_first_load){
                 if (product.is_promotional_item && this.pos.user.role != 'manager' && !this.pos.user.skip_assert_promo){
-                    this.pos.gui.show_popup('error', {
-                        'title': _t('Restriction'),
-                        'body':  _t('Cannot change Promotional Item. Ask your manager on duty!'),
-                    });
+                    throw new Error('Cannot add promotional item');
                 }
             }
             _super_order.add_product.apply(this, arguments);

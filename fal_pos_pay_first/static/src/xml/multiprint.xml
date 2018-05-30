@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- First line of denfence
+        Non manager should not be able to print -->
+    <t t-extend="SubmitOrderButton">
+        <t t-jquery="span:first" t-operation="attributes">
+            <attribute name="t-if">widget.pos.user.role == 'manager'</attribute>
+        </t>
+    </t>
+
+    <t t-extend="PrintBillButton">
+        <t t-jquery="span:first" t-operation="attributes">
+            <attribute name="t-if">widget.pos.user.role == 'manager'</attribute>
+        </t>
+    </t>
+
+</templates>

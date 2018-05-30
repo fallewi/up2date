@@ -2,12 +2,22 @@
 <templates id="template" xml:space="preserve">
 
     <t t-extend="Orderline">
-        <t t-jquery="li" t-operation="attributes">
+        <!-- <t t-jquery="li" t-operation="attributes">
             <attribute name="t-attf-class">orderline #{ line.selected ? 'selected' : '' } #{ line.get_product().is_topping_item ? 'addons' : '' }</attribute>
-        </t>
-        <t t-jquery="t[t-esc='line.get_product().display_name']" t-operation="before">
-            <t t-if="line.get_product().is_topping_item">
-                <i class='fa fa-plus' />
+        </t> -->
+        <t t-jquery=".info-list" t-operation="append">
+            <t t-if="line.get_addons_product_array().length &#62; 0">
+                <li class="info orderline-addons">
+                    <span class="orderline-addons-left">
+                        <i class='fa fa-plus'/>
+                        <t t-foreach="line.get_addons_product_array()" t-as="addons_product">
+                            <t t-esc="addons_product.display_name"/>
+                        </t>
+                    </span>
+                    <span class="orderline-addons-right">
+                        (+<t t-esc="widget.format_currency(line.get_addons_total_price())"/>)
+                    </span>
+                </li>
             </t>
         </t>
     </t>

@@ -1,8 +1,24 @@
 
 /* ------ Addons Orderline ------- */
 
+/*Orderline-addons is the note like "addons"
+Orderline.addons is the addons product*/
 .pos .order .orderline.addons{
     color: #ffcc00;
-    width: 95%;
     margin-left: 5%;
+    display: none;
+}
+
+.pos .order .orderline-addons {
+    margin: 8px;
+    color: #b38f00;
+    width: 98%;
+}
+
+.pos .order .orderline-addons .orderline-addons-left {
+
+}
+
+.pos .order .orderline-addons .orderline-addons-right {
+	float:right;
 }
