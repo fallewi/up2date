@@ -5,10 +5,10 @@
         Non manager should not be able to print -->
     <t t-extend="PaymentScreenWidget">
         <t t-jquery=".button.next" t-operation="attributes">
-            <attribute name="t-if">widget.pos.user.role == 'manager'</attribute>
+            <attribute name="t-if">widget.pos.user.role == 'manager' or (widget.pos and widget.pos.get_order() and widget.pos.get_order().bill_locked or False)</attribute>
         </t>
         <t t-jquery=".button.next" t-operation="after">
-            <span class='button paidnorder' t-if="widget.pos.user.role != 'manager'">
+            <span class='button paidnorder' t-if="widget.pos.user.role != 'manager' and (widget.pos and widget.pos.get_order() and !widget.pos.get_order().bill_locked or False)">
                 Bill &amp; Order
             </span>
         </t>

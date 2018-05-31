@@ -1,0 +1,11 @@
+<odoo>
+
+    <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+        	<link rel="stylesheet" href="/fal_pos_max_sell/static/src/css/pos.css" id="pos-stylesheet"/>
+
+            <script type="text/javascript" src="/fal_pos_max_sell/static/src/js/sold_out.js"></script>
+            <script type="text/javascript" src="/fal_pos_max_sell/static/src/js/models.js"></script>
+        </xpath>
+    </template>
+</odoo>

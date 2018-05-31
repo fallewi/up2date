@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="Orderline">
+        <t t-jquery=".info-list" t-operation="append">
+            <t t-if="line.product.package_item_ids_string">
+                <li class="info package-product">
+                    <i class='fa fa-puzzle-piece'/><t t-esc="line.product.package_item_ids_string" />
+                </li>
+            </t>
+        </t>
+    </t>
+
+</templates>
