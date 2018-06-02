@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Hide all feature on orderline regarding to kitchen -->
+    <t t-extend="Orderline">
+        <t t-jquery=".done" t-operation="replace">
+        </t>
+        <t t-jquery=".error" t-operation="replace">
+        </t>
+        <t t-jquery=".priority" t-operation="replace">
+        </t>
+        <t t-jquery=".put-back" t-operation="replace">
+        </t>
+        <t t-jquery=".cancel" t-operation="replace">
+        </t>
+        <t t-jquery="span[t-if='line.state']" t-operation="replace">
+        </t>
+    </t>
+
+    <!-- Hide all button to kitchen on Keypad -->
+    <t t-extend="set_order_done">
+        <t t-jquery=".control-button" t-operation="replace">
+        </t>
+    </t>
+
+    <t t-extend="set_line_high_priority">
+        <t t-jquery=".control-button" t-operation="replace">
+        </t>
+    </t>
+
+    <t t-extend="set_line_exit_high_priority">
+        <t t-jquery=".control-button" t-operation="replace">
+        </t>
+    </t>
+
+    <t t-extend="go_kitchen_screen">
+        <t t-jquery=".control-button" t-operation="replace">
+        </t>
+    </t>
+
+    <t t-extend="delivery_kitchen">
+        <t t-jquery=".control-button" t-operation="replace">
+        </t>
+    </t>
+
+</templates>

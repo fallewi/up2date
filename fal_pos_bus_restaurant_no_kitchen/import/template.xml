@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+        <template id="pos_retail_restaurant_assets_no_kitchen" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+            </xpath>
+        </template>
+
+	</data>
+</openerp>

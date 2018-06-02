@@ -1,0 +1,9 @@
+<odoo>
+
+    <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/fal_pos_bus_pay_first/static/src/js/client_send_notify.js"></script>
+            <script type="text/javascript" src="/fal_pos_bus_pay_first/static/src/js/client_get_notify.js"></script>
+        </xpath>
+    </template>
+</odoo>

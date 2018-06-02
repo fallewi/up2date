@@ -14,25 +14,35 @@ class pos_config(models.Model):
     @api.model
     def limit_reached(self, config_id):
         # Get the limit object
+        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc
         now = fields.Datetime.from_string(fields.Datetime.now())
+        now = pytz.utc.localize(now)
+        now = now.astimezone(tz)
         limit_ids = self.env['pos.config.sell.limit'].search([('pos_config_id', '=', config_id), ('start_time' ,"<=", now.hour), ('end_time' ,">=", now.hour)])
+        print ("===========================")
+        print (now)
+        print (limit_ids)
         for sell_limit in limit_ids:
             # Date Start & End
             tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc
             enddate = fields.Datetime.from_string(fields.Datetime.now())
             enddate = tz.localize(enddate)
-            enddate = enddate.replace(hour=sell_limit.end_time)
+            enddate = enddate.replace(hour=sell_limit.end_time, minute=0, second=0)
             enddate = enddate.astimezone(pytz.utc)
             string_enddate = fields.Datetime.to_string(enddate)
 
             startdate = fields.Datetime.from_string(fields.Datetime.now())
             startdate = tz.localize(startdate)  # Add "+hh:mm" timezone
-            startdate = startdate.replace(hour=sell_limit.start_time)  # Set 8 AM in localtime
+            startdate = startdate.replace(hour=sell_limit.start_time, minute=0, second=0)  # Set 8 AM in localtime
             startdate = startdate.astimezone(pytz.utc)  # Convert to UTC
             string_startdate = fields.Datetime.to_string(startdate)
 
+            print (string_startdate)
+            print (string_enddate)
+
             # Search corresponding order
             total_sale = sum(order.amount_total for order in self.env['pos.order'].search([('date_order', '>=', string_startdate), ('date_order', '<=', string_enddate), ('config_id', '=', config_id)]))
+            print (total_sale)
             if total_sale > sell_limit.max_sell:
                 return True
         return False

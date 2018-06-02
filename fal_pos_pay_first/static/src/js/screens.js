@@ -26,7 +26,7 @@ var PaymentScreenWidget = screens.PaymentScreenWidget.include({
             // Order
             var order = self.pos.get_order();
             if (order && order.is_paid()){
-                order.bill_locked = true
+                order.set_bill_locked(true)
                 // Kitchen Print
                 if (order.hasChangesToPrint()){
                     order.printChanges();

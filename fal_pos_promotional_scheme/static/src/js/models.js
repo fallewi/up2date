@@ -43,16 +43,19 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
             this.scheme = this.scheme || "";
         },
         assert_promo_item: function() {
+            ///////////////////////////////////////////////////////////////////////////////////
+            // For now turn it off, because with sync, it will cause problem
+            //////////////////////////////////////////////////////////////////////////////////
             // If.promo item, don't let non-manager to add / modify
-            if (!this.pos.the_first_load){
-                if (this.product.is_promotional_item && this.pos.user.role != 'manager' && !this.pos.user.skip_assert_promo){
-                    this.pos.gui.show_popup('error-traceback', {
-                        'title': _t('Restriction'),
-                        'body':  _t('Cannot change Promotional Item. Ask your manager on duty!'),
-                    });
-                    return false
-                }
-            }
+            // if (!this.pos.the_first_load){
+            //     if (this.product.is_promotional_item && this.pos.user.role != 'manager' && !this.pos.user.skip_assert_promo){
+            //         this.pos.gui.show_popup('error-traceback', {
+            //             'title': _t('Restriction'),
+            //             'body':  _t('Cannot change Promotional Item. Ask your manager on duty!'),
+            //         });
+            //         return false
+            //     }
+            // }
             return true
         },
         set_scheme: function(scheme){

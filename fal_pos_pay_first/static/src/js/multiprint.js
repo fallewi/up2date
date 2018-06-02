@@ -9,6 +9,17 @@ odoo.define('fal_pos_pay_first.models', function (require) {
 
     var _t = core._t;
 
+    var _super_posmodel = models.PosModel.prototype;
+    models.PosModel = models.PosModel.extend({
+        load_orders: function () {
+            var self = this;
+            this.pay_first_first_load = true;
+            _super_posmodel.load_orders.apply(this, arguments);
+            this.pay_first_first_load = false;
+        },
+
+    });
+
     var _super_order = models.Order.prototype;
     models.Order = models.Order.extend({
 
@@ -26,7 +37,7 @@ odoo.define('fal_pos_pay_first.models', function (require) {
         if (this.pos.user.role == "manager"){
             _super_order.printChanges.apply(this,arguments);
         }else{
-            if (!this.bill_locked){
+            if (!this.get_bill_locked()){
                 this.pos.gui.show_popup('error-traceback', {
                     'title': _t('Restriction'),
                     'body':  _t("Cannot send order to kichen manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
@@ -42,7 +53,7 @@ odoo.define('fal_pos_pay_first.models', function (require) {
         if (this.pos.user.role == "manager"){
             _super_order.saveChanges.apply(this,arguments);
         }else{
-            if (!this.bill_locked){
+            if (!this.get_bill_locked()){
                 this.pos.gui.show_popup('error-traceback', {
                     'title': _t('Restriction'),
                     'body':  _t("Cannot send order to kichen manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
@@ -61,7 +72,7 @@ odoo.define('fal_pos_pay_first.models', function (require) {
         if (this.pos.user.role == "manager"){
             return _super_order.export_for_printing.apply(this,arguments);
         }else{
-            if (!this.bill_locked){
+            if (!this.get_bill_locked()){
                 this.pos.gui.show_popup('error-traceback', {
                     'title': _t('Restriction'),
                     'body':  _t("Cannot print bill manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
@@ -72,7 +83,13 @@ odoo.define('fal_pos_pay_first.models', function (require) {
             }
         }
     },
-
+    set_bill_locked: function(bill_locked){
+        this.bill_locked = bill_locked;
+        this.trigger('change',this);
+    },
+    get_bill_locked: function(){
+        return this.bill_locked;
+    },
     export_as_JSON: function() {
         var json = _super_order.export_as_JSON.apply(this, arguments);
         if (this.bill_locked) {
@@ -87,8 +104,10 @@ odoo.define('fal_pos_pay_first.models', function (require) {
     assert_editable: function() {
         _super_order.assert_editable.apply(this, arguments);
         // Also Check for bill locked Except manager
-        if (this.bill_locked && this.pos.user.role != "manager") {
-            throw new Error('Billed Order cannot be modified');
+        if (!this.pos.pay_first_first_load){
+            if (this.get_bill_locked() && this.pos.user.role != "manager") {
+                throw new Error('Billed Order cannot be modified');
+            }
         }
     },
 });
