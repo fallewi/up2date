@@ -26,6 +26,9 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
         get_addons_product: function(){
             return this.addons_products;
         },
+        get_addons_product_string: function(){
+            return this.addons_products;
+        },
         destroy_addons_product: function(){
             this.addons_products = [];
             this.set_unit_price(this.pos.db.product_by_id[this.product.id].lst_price)

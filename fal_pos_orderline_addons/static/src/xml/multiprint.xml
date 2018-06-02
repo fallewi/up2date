@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="OrderChangeReceipt">
+        <t t-jquery="t[t-if='change.note']" t-operation="after">
+            <t t-if="change.addons.length &gt; 0">
+                <line>
+                    <left>Addons</left>
+                    <right>...</right>
+                </line>
+                <t t-foreach="addons" t-as="addon">
+                    <div><span font='b' bold='off' line-ratio='0.4' indent='1' width='30'>--- <t t-esc="addon.display_name" /></span></div>
+                    <line></line>
+                </t>
+            </t>
+        </t>
+    </t>
+
+</templates>
