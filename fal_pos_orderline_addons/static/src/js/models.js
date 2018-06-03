@@ -26,8 +26,13 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
         get_addons_product: function(){
             return this.addons_products;
         },
-        get_addons_product_string: function(){
-            return this.addons_products;
+        has_addons: function(){
+            if (this.addons_products.length > 0){
+                return true
+            }else{
+                return false
+            }
+            return false
         },
         destroy_addons_product: function(){
             this.addons_products = [];

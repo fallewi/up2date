@@ -24,6 +24,9 @@ models.Order = models.Order.extend({
         });
         return resume;
     },
+    // Can't really super this one
+    // Result is an array that doesn't have relation with current res object.
+    // That's why we cannot just add the addons into the result object.
     computeChanges: function(categories){
         var current_res = this.build_line_resume();
         var old_res     = this.saved_resume || {};
@@ -74,7 +77,7 @@ models.Order = models.Order.extend({
                     'name':     this.pos.db.get_product_by_id(old.product_id).display_name,
                     'name_wrapped': old.product_name_wrapped,
                     'note':     old.note,
-                    'addons':   curr.addons,
+                    'addons':   old.addons,
                     'qty':      old.qty, 
                 });
             }
