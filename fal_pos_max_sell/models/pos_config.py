@@ -19,9 +19,6 @@ class pos_config(models.Model):
         now = pytz.utc.localize(now)
         now = now.astimezone(tz)
         limit_ids = self.env['pos.config.sell.limit'].search([('pos_config_id', '=', config_id), ('start_time' ,"<=", now.hour), ('end_time' ,">=", now.hour)])
-        print ("===========================")
-        print (now)
-        print (limit_ids)
         for sell_limit in limit_ids:
             # Date Start & End
             tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc
@@ -37,12 +34,8 @@ class pos_config(models.Model):
             startdate = startdate.astimezone(pytz.utc)  # Convert to UTC
             string_startdate = fields.Datetime.to_string(startdate)
 
-            print (string_startdate)
-            print (string_enddate)
-
             # Search corresponding order
             total_sale = sum(order.amount_total for order in self.env['pos.order'].search([('date_order', '>=', string_startdate), ('date_order', '<=', string_enddate), ('config_id', '=', config_id)]))
-            print (total_sale)
             if total_sale > sell_limit.max_sell:
                 return True
         return False
