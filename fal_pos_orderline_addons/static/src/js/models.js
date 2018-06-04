@@ -4,10 +4,14 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
 
     var core = require('web.core');
     var QWeb     = core.qweb;
+    var utils = require('web.utils');
 
+    var round_pr = utils.round_precision;
+    var round_di = utils.round_decimals;
     var _t = core._t;
 
     models.load_fields("product.product", "is_topping_item");
+    models.load_fields("product.product", "available_topping_ids");
 
     var _super_order_line = models.Orderline.prototype;
     models.Orderline = models.Orderline.extend({
@@ -16,10 +20,16 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
             _super_order_line.initialize.apply(this, arguments)
             this.addons_products = this.addons_products || [];
         },
+        // Change how we calculate the unit price (Normal Unit Price + total Addons)
+        get_unit_price: function(){
+            var digits = this.pos.dp['Product Price'];
+            // round and truncate to mimic _symbol_set behavior
+            return parseFloat(round_di(this.price + this.get_addons_total_price()|| 0, digits).toFixed(digits));
+        },
+        // Addons product management
         add_addons_product: function(addons_product){
             if (!(this.addons_products.includes(addons_product))){
                 this.addons_products.push(addons_product);
-                this.set_unit_price(this.get_unit_price() + this.pos.db.product_by_id[addons_product].lst_price)
                 this.trigger('change',this);
             }
         },
@@ -36,7 +46,6 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
         },
         destroy_addons_product: function(){
             this.addons_products = [];
-            this.set_unit_price(this.pos.db.product_by_id[this.product.id].lst_price)
             this.trigger('change',this);
         },
         get_addons_product_array: function(){
@@ -53,6 +62,7 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
             }
             return res;
         },
+        // JSON
         export_as_JSON: function(){
             var json = _super_order_line.export_as_JSON.call(this);
             json.addons_products = this.addons_products;

@@ -17,13 +17,14 @@ var AddonsButton = screens.ActionButtonWidget.extend({
         var self = this;
         var order  = this.pos.get_order();
         var selected_order_line = order.get_selected_orderline();
+        var available_topping = selected_order_line.get_product().available_topping_ids
         if (order && selected_order_line){
             var list = [];
-            for (product in this.pos.db.product_by_id){
-                if(this.pos.db.product_by_id[product].is_topping_item){
+            for (product in available_topping){
+                if(this.pos.db.product_by_id[available_topping[product]].is_topping_item){
                     list.push({
-                        label: _t(this.pos.db.product_by_id[product].display_name),
-                        item:  _t(this.pos.db.product_by_id[product].id),
+                        label: _t(this.pos.db.product_by_id[available_topping[product]].display_name),
+                        item:  _t(this.pos.db.product_by_id[available_topping[product]].id),
                     });
                 }
             }
