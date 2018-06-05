@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name" : "Falinwa POS OrderLine Addons",
-    'summary' : "POS Orderline Addons.",
+    "name" : "Falinwa POS BUS OrderLine Addons",
+    'summary' : "POS Orderline Addons With synchronization.",
     "version" : "1.0",
     "description": """
-        Adding function to add topping / addons on the orderlines / product on POS.
+        Adding function to add topping / addons on the orderlines / product on POS with synchronization.
     """,
     'author' : 'Fal Randy Raharjo.',
     'category' : 'Point of Sale',
     'website' : '',
-    "depends" : ['point_of_sale'],
+    "depends" : ['fal_pos_orderline_addons', 'pos_bus'],
     "data" : [
         'template/import.xml',
-        'views/product_views.xml',
-        'views/point_of_sale_view.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml'

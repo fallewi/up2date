@@ -1,4 +1,4 @@
-odoo.define('fal_pos_promotional_scheme.models', function (require) {
+odoo.define('fal_pos_orderline_addons.models', function (require) {
     var models = require('point_of_sale.models');
     var rpc = require('web.rpc');
 
@@ -17,21 +17,21 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
     models.Orderline = models.Orderline.extend({
         initialize: function (attributes, options) {
             var self = this;
-            _super_order_line.initialize.apply(this, arguments)
             this.addons_products = this.addons_products || [];
+            _super_order_line.initialize.apply(this, arguments)
         },
-        // Change how we calculate the unit price (Normal Unit Price + total Addons)
-        get_unit_price: function(){
-            var digits = this.pos.dp['Product Price'];
-            // round and truncate to mimic _symbol_set behavior
-            return parseFloat(round_di(this.price + this.get_addons_total_price()|| 0, digits).toFixed(digits));
+        set_quantity: function(quantity, keep_price){
+            _super_order_line.set_quantity.apply(this, arguments)
+            if(! keep_price && ! this.price_manually_set){
+                this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity()) + this.get_addons_total_price());
+                this.order.fix_tax_included_price(this);
+            }
         },
         // Addons product management
         add_addons_product: function(addons_product){
-            if (!(this.addons_products.includes(addons_product))){
-                this.addons_products.push(addons_product);
-                this.trigger('change',this);
-            }
+            this.addons_products.push(addons_product);
+            this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity()) + this.get_addons_total_price())
+            this.trigger('change',this);
         },
         get_addons_product: function(){
             return this.addons_products;
@@ -46,6 +46,10 @@ odoo.define('fal_pos_promotional_scheme.models', function (require) {
         },
         destroy_addons_product: function(){
             this.addons_products = [];
+            if(! this.price_manually_set){
+                this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity()));
+                this.order.fix_tax_included_price(this);
+            }
             this.trigger('change',this);
         },
         get_addons_product_array: function(){

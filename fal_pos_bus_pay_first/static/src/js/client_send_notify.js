@@ -1,4 +1,4 @@
-odoo.define('client_send_notify_fal_pos_bus_promotional_scheme', function (require) {
+odoo.define('client_send_notify_fal_pos_pay_first', function (require) {
     var models = require('point_of_sale.models');
     var core = require('web.core');
     var _t = core._t;
