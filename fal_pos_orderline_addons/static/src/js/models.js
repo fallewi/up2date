@@ -66,6 +66,12 @@ odoo.define('fal_pos_orderline_addons.models', function (require) {
             }
             return res;
         },
+        // Printing
+        export_for_printing: function(){
+            var result = _super_order_line.export_for_printing.apply(this,arguments);
+            result.addons_products = this.get_addons_product_array() || [];
+            return result;
+        },
         // JSON
         export_as_JSON: function(){
             var json = _super_order_line.export_as_JSON.call(this);

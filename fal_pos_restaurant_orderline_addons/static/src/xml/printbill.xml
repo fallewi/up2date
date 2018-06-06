@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="BillReceipt">
+        <t t-jquery="t[t-if='simple'] line" t-operation="after">
+            <t t-if="line.addons_products.length &gt; 0">
+                <t t-foreach="line.addons_products" t-as="addon">
+                     <line indent='1'>
+                        <left>+ <t t-esc="addon.display_name" /></left>
+                    </line>
+                </t>
+            </t>
+        </t>
+        <t t-jquery="t[t-if='!simple'] line:first" t-operation="after">
+            <t t-if="line.addons_products.length &gt; 0">
+                <t t-foreach="line.addons_products" t-as="addon">
+                     <line indent='1'>
+                        <left>+ <t t-esc="addon.display_name" /></left>
+                    </line>
+                </t>
+            </t>
+        </t>
+    </t>
+
+</templates>
