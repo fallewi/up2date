@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<!--     <t t-extend="OrderChangeReceipt">
+        <t t-jquery="t[t-if='change.note']" t-operation="after">
+            <t t-if="change.package !== ''">
+                <line>
+                    <left>Item</left>
+                    <right>...</right>
+                </line>
+                    <span><div><t t-esc="change.package" /> </div></span>
+                <line></line>
+            </t>
+        </t>
+    </t> -->
+
+</templates>

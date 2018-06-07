@@ -1,4 +1,4 @@
-odoo.define('fal_pos_orderline_addons.multiprint', function (require) {
+odoo.define('fal_pos_restaurant_orderline_addons.multiprint', function (require) {
 "use strict";
 
 var models = require('point_of_sale.models');

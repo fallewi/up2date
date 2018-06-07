@@ -4,7 +4,6 @@
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/fal_pos_orderline_addons/static/src/js/models.js"></script>
         	<script type="text/javascript" src="/fal_pos_orderline_addons/static/src/js/screens.js"></script>
-        	<script type="text/javascript" src="/fal_pos_orderline_addons/static/src/js/multiprint.js"></script>
         	<link rel="stylesheet" type="text/css" href="/fal_pos_orderline_addons/static/src/css/addons.css" />
         </xpath>
     </template>

@@ -2,7 +2,7 @@
 
     <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
         <xpath expr="." position="inside">
-            <script type="text/javascript" src="/fal_pos_package_product/static/src/js/models.js"></script>
+        	<script type="text/javascript" src="/fal_pos_restaurant_orderline_addons/static/src/js/multiprint.js"></script>
         </xpath>
     </template>
 </odoo>

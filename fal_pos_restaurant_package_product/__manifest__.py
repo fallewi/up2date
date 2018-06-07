@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name" : "Falinwa POS Restaurant OrderLine Addons",
-    'summary' : "POS Restaurant Orderline Addons.",
+    "name" : "Falinwa POS Package Product Restaurant",
+    'summary' : "POS Package Product for retaurant.",
     "version" : "1.0",
     "description": """
-        Adding function to add topping / addons on the orderlines / product on POS Restuarant.\n
-        Main point is on the bill receipt
+        Adding function to have package product for restaurant.
     """,
     'author' : 'Fal Randy Raharjo.',
     'category' : 'Point of Sale',
     'website' : '',
-    "depends" : ['pos_restaurant', 'fal_pos_orderline_addons'],
+    "depends" : ['pos_restaurant', 'fal_pos_package_product'],
     "data" : [
-        'template/import.xml'
+        'template/import.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml'
