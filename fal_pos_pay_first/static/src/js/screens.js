@@ -65,4 +65,47 @@ var PaymentScreenWidget = screens.PaymentScreenWidget.include({
     },
 });
 
+var openBillScreenWidget = screens.ActionButtonWidget.extend({
+    template: 'openBillScreenWidget',
+    button_click: function(){
+        var self = this;
+        var order  = this.pos.get_order();
+        var admin_pin = this.pos.users[0].pos_security_pin
+        if (!admin_pin){
+            admin_pin = '1234'
+        }
+        if (order){
+            if (!order.get_bill_locked()){
+                this.pos.gui.show_popup('confirm',{
+                    'title': _t('Lock the bill'),
+                    'body': _t('Please input manager password to lock manually.'),
+                    confirm: function(){
+                        self.pos.gui.ask_password(admin_pin).then(function(){
+                            order.set_bill_locked(true);
+                        });
+                    },
+                });
+            }else{
+                this.pos.gui.show_popup('confirm',{
+                    'title': _t('Billed Order are locked'),
+                    'body': _t('You can ask manager to open the order.'),
+                    confirm: function(){
+                        self.pos.gui.ask_password(admin_pin).then(function(){
+                            order.set_bill_locked(false);
+                        });
+                    },
+                });
+            }
+        }
+    },
+});
+
+screens.define_action_button({
+    'name': 'openbill',
+    'widget': openBillScreenWidget,
+    'condition': function(){
+        return true;
+    },
+});
+
 });

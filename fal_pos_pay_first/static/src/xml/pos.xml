@@ -14,4 +14,10 @@
         </t>
     </t>
 
+    <t t-name="openBillScreenWidget">
+        <div class='control-button'>
+            <i class='fa fa-unlock-alt' /> Un/lock
+        </div>
+    </t>
+
 </templates>

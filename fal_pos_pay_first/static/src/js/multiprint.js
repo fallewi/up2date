@@ -38,10 +38,7 @@ odoo.define('fal_pos_pay_first.models', function (require) {
             _super_order.printChanges.apply(this,arguments);
         }else{
             if (!this.get_bill_locked()){
-                this.pos.gui.show_popup('error-traceback', {
-                    'title': _t('Restriction'),
-                    'body':  _t("Cannot send order to kichen manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
-                });
+                throw new Error("Cannot order manually (Except manager)!");
             }
             else{
                 _super_order.printChanges.apply(this,arguments);
@@ -54,10 +51,7 @@ odoo.define('fal_pos_pay_first.models', function (require) {
             _super_order.saveChanges.apply(this,arguments);
         }else{
             if (!this.get_bill_locked()){
-                this.pos.gui.show_popup('error-traceback', {
-                    'title': _t('Restriction'),
-                    'body':  _t("Cannot send order to kichen manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
-                });
+                throw new Error("Cannot print bill manually (Except manager)!");
             }else{
                 return _super_order.saveChanges.apply(this,arguments);
             }
@@ -73,10 +67,6 @@ odoo.define('fal_pos_pay_first.models', function (require) {
             return _super_order.export_for_printing.apply(this,arguments);
         }else{
             if (!this.get_bill_locked()){
-                this.pos.gui.show_popup('error-traceback', {
-                    'title': _t('Restriction'),
-                    'body':  _t("Cannot print bill manually (Except manager)!\n Proceed to payment and the order will be sent automatically."),
-                });
                 throw new Error("Cannot print bill manually (Except manager)!");
             }else{
                 return _super_order.export_for_printing.apply(this,arguments);
