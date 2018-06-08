@@ -104,7 +104,8 @@ screens.define_action_button({
     'name': 'openbill',
     'widget': openBillScreenWidget,
     'condition': function(){
-        return true;
+        // Not use for now
+        return false;
     },
 });
 
