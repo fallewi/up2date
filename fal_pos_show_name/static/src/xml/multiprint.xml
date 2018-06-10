@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="OrderChangeReceipt">
+        <t t-jquery="t[t-esc='changes.name']" t-operation="after">
+            <t t-esc="changes.person_name" />
+        </t>
+    </t>
+
+</templates>
