@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
 
+    <!-- NO NEED TO USE THIS BUTTON AGAIN, ALL PRINT JOB IS STARTED BY VALIDATE -->
     <!-- First line of denfence
         Non manager should not be able to print -->
-    <t t-extend="PaymentScreenWidget">
+    <!-- <t t-extend="PaymentScreenWidget">
         <t t-jquery=".button.next" t-operation="attributes">
             <attribute name="t-if">widget.pos.user.role == 'manager' or (widget.pos and widget.pos.get_order() and widget.pos.get_order().bill_locked or False)</attribute>
         </t>
@@ -12,7 +13,7 @@
                 Bill &amp; Order
             </span>
         </t>
-    </t>
+    </t> -->
 
     <t t-name="openBillScreenWidget">
         <div class='control-button'>

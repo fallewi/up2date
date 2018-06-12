@@ -11,60 +11,38 @@ var QWeb     = core.qweb;
 
 var _t = core._t;
 
-var PaymentScreenWidget = screens.PaymentScreenWidget.include({
-    renderElement: function() {
+var ReceiptScreenWidget = screens.ReceiptScreenWidget.include({
+    print_xml: function() {
         var self = this;
         this._super();
-        //////////////////////////////////////////////////////
-        // This button will call the bill print + kitchen order
-        // After this button is clicked, the order is finished
-        // LOCK all the possible change on payment & Item
-        /////////////////////////////////////////////////////
-        this.$('.paidnorder').click(function(){
-            // Should be able to call using the button click
 
-            // Order
-            var order = self.pos.get_order();
-            if (order && order.is_paid()){
-                order.set_bill_locked(true)
-                // Hide the button
-                self.$('.paidnorder').addClass('oe_hidden');
-
-                // Kitchen Print
-                if (order.hasChangesToPrint()){
-                    order.printChanges();
-                    order.saveChanges();
-                }
-
-                // Bill Print
-                if (!self.pos.config.iface_print_via_proxy) {
-                    self.gui.show_screen('bill');
-                } else {
-                    if(order.get_orderlines().length > 0){
-                        var receipt = order.export_for_printing();
-                        receipt.bill = true;
-                        self.pos.proxy.print_receipt(QWeb.render('BillReceipt',{
-                            receipt: receipt, widget: self, pos: self.pos, order: order,
-                        }));
-                    }
-                }
-                // After printing, go back to product screen
-                self.pos.set_table(null);
-            }
-        });
-    },
-     order_changes: function(){
-        var self = this;
-        self._super();
+        // Also print the bill and kitchen order
+        // Order
         var order = self.pos.get_order();
-        if (!order) {
-            return;
-        } else if (order.is_paid()) {
-            self.$('.paidnorder').addClass('highlight');
-        }else{
-            self.$('.paidnorder').removeClass('highlight');
-        }
+        if (order && order.is_paid()){
+            order.set_bill_locked(true)
+            // Hide the button, Prevent from crazy clicking
+            self.$('.next').addClass('oe_hidden');
 
+            // Kitchen Print
+            if (order.hasChangesToPrint()){
+                order.printChanges();
+                order.saveChanges();
+            }
+
+            // Bill Print
+            if (!self.pos.config.iface_print_via_proxy) {
+                self.gui.show_screen('bill');
+            } else {
+                if(order.get_orderlines().length > 0){
+                    var receipt = order.export_for_printing();
+                    receipt.bill = true;
+                    self.pos.proxy.print_receipt(QWeb.render('BillReceipt',{
+                        receipt: receipt, widget: self, pos: self.pos, order: order,
+                    }));
+                }
+            }
+        }
     },
 });
 
