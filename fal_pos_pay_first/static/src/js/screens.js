@@ -27,6 +27,9 @@ var PaymentScreenWidget = screens.PaymentScreenWidget.include({
             var order = self.pos.get_order();
             if (order && order.is_paid()){
                 order.set_bill_locked(true)
+                // Hide the button
+                self.$('.paidnorder').addClass('oe_hidden');
+
                 // Kitchen Print
                 if (order.hasChangesToPrint()){
                     order.printChanges();
