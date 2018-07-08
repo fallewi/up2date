@@ -31,8 +31,6 @@ class PosOrder(models.Model):
         for order_id in obj_order_ids:
             for order in orders:
                 if order_id.pos_reference == order['data']['name']:
-                    print ("========================")
-                    print (order)
                     for data in order_id.lines:
                         for order_line in order['data']['lines']:
                             if data.name == order_line[2]['name']:
