@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery="t[t-esc='receipt.name']" t-operation="replace">
+        </t>
+    </t>
+
+    <t t-extend="BillReceipt">
+         <t t-jquery="t[t-esc='receipt.name']" t-operation="replace">
+        </t>
+    </t>
+
+</templates>
