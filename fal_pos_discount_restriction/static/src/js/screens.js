@@ -4,6 +4,8 @@ odoo.define('fal_pos_discount_restriction.screens', function (require) {
     var screens = require('point_of_sale.screens');
     var rpc = require('web.rpc');
 
+    var discountButtonWidget = require('pos_discount.pos_discount');
+
     var core = require('web.core');
     var QWeb     = core.qweb;
 

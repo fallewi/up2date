@@ -2,6 +2,7 @@
     <template id="assets_backend" name="import assets" inherit_id="point_of_sale.assets">
         <xpath expr="." position="inside">
         	<script type="text/javascript" src="/fal_pos_discount_restriction/static/src/js/screens.js"></script>
+        	<script type="text/javascript" src="/fal_pos_discount_restriction/static/src/js/discount.js"></script>
         </xpath>
     </template>
 </odoo>

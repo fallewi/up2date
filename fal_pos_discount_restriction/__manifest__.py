@@ -10,7 +10,7 @@
     'author' : 'Fal Randy Raharjo.',
     'category' : 'Point of Sale',
     'website' : '',
-    "depends" : ['pos_restaurant'],
+    "depends" : ['pos_restaurant', 'pos_discount'],
     "data" : [
         'template/import.xml',
     ],
