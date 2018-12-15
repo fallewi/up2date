@@ -23,8 +23,9 @@
                                 <field name="repeatable"/>
                             </group>
                             <group>
-                                <field name="product_id" attrs="{'required': [('scheme_type', '=', 'product')]}"/>
-                                <field name="product_uom_qty" attrs="{'required': [('scheme_type', '=', 'product')]}"/>
+                                <field name="product_id" attrs="{'invisible': [('scheme_type', '!=', 'product')], 'required': [('scheme_type', '=', 'product')]}"/>
+                                <field name="product_uom_qty" attrs="{'invisible': [('scheme_type', '!=', 'product')], 'required': [('scheme_type', '=', 'product')]}"/>
+                                <field name="discount_percentage" attrs="{'invisible': [('scheme_type', '!=', 'discount')], 'required': [('scheme_type', '=', 'discount')]}"/>
                             </group>
                         </group>
                         <separator string="Rules"/>

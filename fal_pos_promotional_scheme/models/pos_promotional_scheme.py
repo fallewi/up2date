@@ -10,7 +10,9 @@ class SchemeProgram(models.Model):
 
     name = fields.Char("Name", required=True)
     scheme_type = fields.Selection(
-                        [('product', 'Product')], required=True)
+                        [('product', 'Product'),
+                         ('discount', 'Discount')], required=True)
+    discount_percentage = fields.Float("Discount (%)")
     product_id = fields.Many2one('product.product', string="Product", domain="[('is_promotional_item', '=', 1)]")
     product_uom_qty = fields.Float(string='Quantity', digits=dp.get_precision('Product Unit of Measure'), default=1.0)
     active = fields.Boolean('Active', default=True)
@@ -30,7 +32,10 @@ class SchemeProgram(models.Model):
                     if rule.rule_type == 'total_sale':
                         vals['total_sale'] -= rule.sale_total
                         if vals['total_sale'] > 0:
-                            qty += scheme.product_uom_qty
+                            if scheme.scheme_type == 'product':
+                                qty += scheme.product_uom_qty
+                            elif scheme.scheme_type == 'discount':
+                                qty += scheme.discount_percentage
                         else:
                             possible = False
             return qty
@@ -39,7 +44,10 @@ class SchemeProgram(models.Model):
                 if rule.rule_type == 'total_sale':
                     vals['total_sale'] -= rule.sale_total
                     if vals['total_sale'] > 0:
-                        return scheme.product_uom_qty
+                        if scheme.scheme_type == 'product':
+                            return scheme.product_uom_qty
+                        elif scheme.scheme_type == 'discount':
+                            return scheme.discount_percentage
         return False
 
 

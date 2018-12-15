@@ -51,6 +51,47 @@ var PromoSchemeButton = screens.ActionButtonWidget.extend({
                                         'body': _t("Sorry, this order doesn't qualify for the promotional scheme. If you are sure that this should be possible, please contact the responsible manager."),
                                     });
                                 }
+                            }else if(scheme.scheme_type == 'discount'){
+                                if (result > 0){
+                                    self.pos.user.skip_assert_promo = true
+                                    // This is copy-paste method from discount
+                                    // One day I will change it into correct way.. One day..
+                                    var order    = self.pos.get_order();
+                                    var lines    = order.get_orderlines();
+                                    var product  = self.pos.db.get_product_by_id(self.pos.config.discount_product_id[0]);
+                                    if (product === undefined) {
+                                        this.gui.show_popup('error', {
+                                            title : _t("No discount product found"),
+                                            body  : _t("The discount product seems misconfigured. Make sure it is flagged as 'Can be Sold' and 'Available in Point of Sale'."),
+                                        });
+                                        return;
+                                    }
+
+                                    // Remove existing discounts
+                                    var i = 0;
+                                    while ( i < lines.length ) {
+                                        if (lines[i].get_product() === product) {
+                                            order.remove_orderline(lines[i]);
+                                        } else {
+                                            i++;
+                                        }
+                                    }
+
+                                    // Add discount
+                                    var discount = - result / 100.0 * order.get_total_with_tax();
+
+                                    if( discount < 0 ){
+                                        order.add_product(product, { price: discount });
+                                    }
+                                    // 
+                                    order.get_last_orderline().set_scheme(scheme);
+                                    self.pos.user.skip_assert_promo = false
+                                } else {
+                                    self.gui.show_popup('error',{
+                                        'title': _t('Error: Cannot apply the promo'),
+                                        'body': _t("Sorry, this order doesn't qualify for the promotional scheme. If you are sure that this should be possible, please contact the responsible manager."),
+                                    });
+                                }
                             }
                         }).fail(function (type, error) {
                             self.pos.gui.show_popup('error-traceback', {
