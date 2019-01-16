@@ -12,6 +12,7 @@ odoo.define('fal_pos_orderline_addons.models', function (require) {
 
     models.load_fields("product.product", "is_topping_item");
     models.load_fields("product.product", "available_topping_ids");
+    models.load_fields("product.product", "available_topping_product_ids");
 
     var _super_order_line = models.Orderline.prototype;
     models.Orderline = models.Orderline.extend({
