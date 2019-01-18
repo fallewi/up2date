@@ -34,8 +34,12 @@ class PosOrder(models.Model):
                     for data in order_id.lines:
                         for order_line in order['data']['lines']:
                             if data.name == order_line[2]['name']:
+                                product_ids = self.env['product.product'].browse(order_line[2]['addons_products'])
+                                product_template_ids = []
+                                for product_id in product_ids:
+                                    product_template_ids.append(product_id.product_tmpl_id.id)
                                 data.write({
-                                    'fal_addons_product_ids': [(6, 0, order_line[2]['addons_products'])],
+                                    'fal_addons_product_ids': [(6, 0, product_template_ids)],
                                     })
 
         return order_ids
